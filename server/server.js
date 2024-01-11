@@ -2,7 +2,6 @@ const express = require('express')
 const { ApolloServer } = require('@apollo/server')
 const { expressMiddleware } = require('@apollo/server/express4')
 const path = require('path')
-const routes = require('./routes')
 
 const { authMiddleware } = require('./utils/auth')
 
@@ -37,8 +36,6 @@ const startApolloServer = async () => {
 			res.sendFile(path.join(__dirname, '../client/dist/index.html'))
 		})
 	}
-
-	app.use(routes)
 
 	db.once('open', () => {
 		app.listen(PORT, () => {
